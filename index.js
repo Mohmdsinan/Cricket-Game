@@ -17,7 +17,7 @@ function tossSelection(choice) {
 
     const ballButton = document.createElement("button");
     ballButton.innerText = "Ball";
-    ballButton.addEventListener("click", () =>  selected('ball'));
+    ballButton.addEventListener("click", () => selected('ball'));
 
     batButton.classList.add("choose-button");
 
@@ -32,26 +32,43 @@ function tossSelection(choice) {
 
 function selected(choice) {
   if (choice === 'bat') {
-    
+
     const gameArea = document.querySelector(".game-area");
 
-    gameArea.innerText ="Your batting Turn! \n choose your run \n";
+    gameArea.innerText = "Your batting Turn! \n choose your run \n";
 
 
-    for(let i= 1; i<= 6; i++){
-      if(i === 5)
+    for (let i = 1; i <= 6; i++) {
+      if (i === 5)
         continue;
 
-      else{
+      else {
         runButton = document.createElement("button");
         runButton.innerText = i;
         gameArea.appendChild(runButton);
-        runButton.addEventListener ("click", ()=> userRuns (i)) ;
+        runButton.addEventListener("click", () => userRuns(i));
       }
     }
   }
 }
-
-function userRuns (runs){
+let userScore = 0;
+let i = 0;
+function userRuns(runs) {
   
+    let computerMove = computerRuns();
+    if (runs !== computerMove) {
+      userScore += runs;
+      console.log(userScore);
+    } else {
+      console.log("out");
+    }
+
+  
+}
+
+function computerRuns() {
+  const choice = [1, 2, 3, 4, 6];
+  let compRuns = choice[Math.floor(Math.random() * choice.length)];
+
+  return compRuns;
 }
