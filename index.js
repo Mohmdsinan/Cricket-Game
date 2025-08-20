@@ -1,6 +1,7 @@
+/* This function is used to select the toss and show a button to select bat or ball if the user win in the toss, and call the respective functions */
+
 function tossSelection(choice) {
   const tossResult = Math.random() < 0.5 ? 'head' : 'tail';
-
 
   if (tossResult === choice) {
     const pTag = document.querySelector('.bat-ball');
@@ -30,6 +31,9 @@ function tossSelection(choice) {
   }
 }
 
+
+/* This funtion will create some button if the user hits the bat button and when the user hit corresponding buttons, it call another function to calculate the runs */
+
 function selected(choice) {
   if (choice === 'bat') {
 
@@ -51,19 +55,21 @@ function selected(choice) {
     }
   }
 }
+
 let userScore = 0;
 let i = 0;
-function userRuns(runs) {
-  
-    let computerMove = computerRuns();
-    if (runs !== computerMove) {
-      userScore += runs;
-      console.log(userScore);
-    } else {
-      console.log("out");
-    }
 
-  
+function userRuns(runs) {
+
+  let computerMove = computerRuns();
+  if (runs !== computerMove) {
+    userScore += runs;
+    console.log(userScore);
+  } else {
+    console.log("out");
+  }
+
+
 }
 
 function computerRuns() {
